@@ -29,9 +29,6 @@ func GetBlockchainConfig(ctx context.Context, api ton.APIClientWrapped) (*cell.C
 	var res tl.Serializable
 
 	b, err := api.GetMasterchainInfo(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "get masterchain info")
-	}
 
 	err = api.Client().QueryLiteserver(ctx, ton.GetConfigAll{Mode: 0, BlockID: b}, &res)
 	if err != nil {
